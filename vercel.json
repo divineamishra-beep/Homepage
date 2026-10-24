@@ -3,6 +3,10 @@
     {
       "source": "/docs/getting-started/introduction",
       "destination": "/docs-introduction.html"
+    },
+    {
+      "source": "/docs/terms/refund-policy",
+      "destination": "/docs-refund-policy.html"
     }
   ],
   "redirects": [

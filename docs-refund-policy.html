@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Refund &amp; Cancellation Policy — EVEVPS Docs</title>
+<meta name="description" content="EVEVPS refund and cancellation policy: when you can get a refund, how refunds are paid, and how to cancel a Windows RDP or Linux VPS service.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A0E13; --bg2:#0D1218; --surface:#11171F; --line:#1C2530; --line2:#222C38;
+  --text:#E6EBF0; --soft:#C9D2DC; --muted:#A7B3C0; --dim:#93A1B0;
+  --accent:#6E5CF6; --ink:#A89DFA; --tint:#16132B;
+  --display:"Space Grotesk",Inter,system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.65}
+a{color:var(--ink);text-decoration:none}
+a:hover{color:#fff}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+h1,h2,h3{font-family:var(--display);color:#fff;margin:0}
+p{margin:0}
+code{font-family:var(--mono);font-size:.88em;background:#161E28;border:1px solid var(--line2);border-radius:6px;padding:1px 6px;color:#E6EBF0}
+
+/* top bar */
+.top{position:sticky;top:0;z-index:20;background:rgba(10,14,19,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top-in{max-width:1440px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{display:block;height:34px;width:auto}
+.brand span{font-family:var(--mono);font-size:12px;letter-spacing:1.5px;color:var(--dim);border-left:1px solid var(--line2);padding-left:12px}
+.top-links{display:flex;flex-wrap:wrap;align-items:center;gap:8px 20px;font-size:14px;font-weight:500}
+.top-links a{color:var(--soft)}
+.top-links a:hover{color:#fff}
+.btn{display:inline-block;padding:9px 16px;border-radius:10px;font-weight:600;font-size:14px}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:#5D4BEA;color:#fff}
+
+/* layout */
+.layout{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:260px minmax(0,1fr) 220px;gap:48px;padding:0 24px}
+.side{position:sticky;top:64px;align-self:start;height:calc(100vh - 64px);overflow-y:auto;padding:32px 0}
+.group{margin-bottom:28px}
+.group-title{font-family:var(--mono);font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim);margin-bottom:10px}
+.side a{display:block;padding:7px 12px;margin-left:-12px;border-radius:8px;font-size:14px;color:var(--soft)}
+.side a:hover{background:var(--surface);color:#fff}
+.side a[aria-current="page"]{background:var(--tint);color:#fff;font-weight:600;box-shadow:inset 2px 0 0 var(--accent)}
+.side .ext::after{content:" ↗";color:var(--dim)}
+.mobile-nav{display:none}
+
+main{padding:40px 0 88px;min-width:0;max-width:800px}
+.crumb{font-family:var(--mono);font-size:13px;color:var(--ink);margin-bottom:10px}
+h1{font-size:44px;line-height:1.1;letter-spacing:-1px;margin-bottom:14px}
+.lead{font-size:19px;color:var(--muted);margin-bottom:28px}
+.prose p{color:var(--soft);margin-bottom:16px}
+.prose strong{color:#fff;font-weight:600}
+h2{font-size:28px;letter-spacing:-.5px;margin:56px 0 18px;padding-top:4px}
+h2 a.anchor{color:inherit}
+h2 a.anchor:hover::after{content:" #";color:var(--dim)}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.card{display:block;padding:20px;background:var(--surface);border:1px solid var(--line2);border-radius:14px;color:inherit}
+a.card:hover{border-color:var(--accent);color:inherit}
+.card svg{stroke:var(--accent);margin-bottom:12px;display:block}
+.card h3{font-size:17px;margin-bottom:6px}
+.card p{font-size:14px;color:var(--muted)}
+a.card h3::after{content:" →";color:var(--ink)}
+
+.table-wrap{overflow-x:auto;border:1px solid var(--line2);border-radius:14px}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--mono);font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);background:var(--bg2);font-weight:500}
+tr:last-child td{border-bottom:0}
+td{color:var(--soft)}
+td:first-child{color:#fff;font-weight:600}
+.pop{font-family:var(--mono);font-size:11px;padding:2px 8px;border-radius:999px;background:var(--accent);color:#fff;margin-left:6px;font-weight:500;vertical-align:1px}
+
+.steps{list-style:none;padding:0;margin:0;counter-reset:s}
+.steps li{counter-increment:s;position:relative;padding:0 0 22px 52px;color:var(--soft)}
+.steps li::before{content:counter(s);position:absolute;left:0;top:-2px;width:34px;height:34px;border-radius:50%;background:var(--tint);border:1px solid var(--accent);color:#fff;font:600 14px/32px var(--mono);text-align:center}
+.steps li:not(:last-child)::after{content:"";position:absolute;left:17px;top:36px;bottom:4px;width:1px;background:var(--line2)}
+.steps strong{color:#fff}
+
+.note{display:flex;gap:14px;margin-top:40px;padding:16px 18px;border:1px solid #2F2A5C;background:var(--tint);border-radius:14px;color:var(--soft);font-size:15px}
+.note svg{flex:none;stroke:var(--ink);margin-top:2px}
+
+.pager{display:flex;justify-content:flex-end;margin-top:56px;padding-top:24px;border-top:1px solid var(--line)}
+.pager a{display:block;padding:14px 18px;border:1px solid var(--line2);border-radius:12px;text-align:right;color:var(--text)}
+.pager a:hover{border-color:var(--accent)}
+.pager small{display:block;font-size:12px;color:var(--dim)}
+
+.toc{position:sticky;top:64px;align-self:start;padding:40px 0}
+.toc-title{font-family:var(--mono);font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim);margin-bottom:12px}
+.toc a{display:block;font-size:13px;color:var(--dim);padding:5px 0 5px 12px;border-left:1px solid var(--line2)}
+.toc a:hover{color:#fff}
+.toc a.active{color:#fff;border-left-color:var(--accent)}
+
+footer{border-top:1px solid var(--line);color:var(--dim);font-size:13px}
+.foot-in{max-width:1440px;margin:0 auto;padding:22px 24px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+footer a{color:var(--soft)}
+
+@media (max-width:1180px){
+  .layout{grid-template-columns:240px minmax(0,1fr)}
+  .toc{display:none}
+}
+@media (max-width:860px){
+  .layout{grid-template-columns:minmax(0,1fr);gap:0}
+  .side{display:none}
+  .mobile-nav{display:block;margin:20px 0 0;border:1px solid var(--line2);border-radius:12px;background:var(--surface)}
+  .mobile-nav summary{cursor:pointer;padding:12px 16px;font-weight:600;font-size:14px;list-style:none}
+  .mobile-nav summary::after{content:" ▾";color:var(--dim)}
+  .mobile-nav .inner{padding:4px 16px 12px}
+  .mobile-nav a{display:block;padding:7px 0;color:var(--soft);font-size:14px}
+  .top-links .hide-sm{display:none}
+  h1{font-size:34px}
+  h2{font-size:24px}
+  main{padding-top:24px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.list{margin:0 0 8px;padding-left:20px;color:var(--soft)}
+.list li{margin-bottom:12px;padding-left:4px}
+.list li::marker{color:var(--ink)}
+.list strong{color:#fff}
+.updated{margin-top:32px;font-size:13px;color:var(--dim);font-style:italic}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <a href="/" class="brand"><img src="/logo.png" alt="EVEVPS" width="90" height="34"><span>DOCS</span></a>
+    <nav class="top-links" aria-label="Site">
+      <a href="/" class="hide-sm">Home</a>
+      <a href="/#pricing" class="hide-sm">Pricing</a>
+      <a href="https://dash.evevps.com/login.php">Log in</a>
+      <a href="https://dash.evevps.com/cart.php" class="btn btn-primary">Deploy server →</a>
+    </nav>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="side" aria-label="Documentation">
+    <div class="group">
+      <div class="group-title">Getting started</div>
+      <a href="/docs/getting-started/introduction">Introduction</a>
+      <a href="/docs/getting-started/introduction#plans">Plans and pricing</a>
+      <a href="/docs/getting-started/introduction#deploy">Deploy a server</a>
+      <a href="/docs/getting-started/introduction#infrastructure">Infrastructure</a>
+    </div>
+    <div class="group">
+      <div class="group-title">Products</div>
+      <a href="https://dash.evevps.com/cart.php?gid=2" class="ext">Windows RDP</a>
+      <a href="https://dash.evevps.com/cart.php?gid=1" class="ext">Linux VPS</a>
+    </div>
+    <div class="group">
+      <div class="group-title">Account &amp; support</div>
+      <a href="https://dash.evevps.com/clientarea.php" class="ext">Client area</a>
+      <a href="https://dash.evevps.com/knowledgebase" class="ext">Knowledgebase</a>
+      <a href="https://dash.evevps.com/serverstatus.php" class="ext">Network status</a>
+      <a href="https://dash.evevps.com/submitticket.php" class="ext">Submit a ticket</a>
+    </div>
+    <div class="group">
+      <div class="group-title">Legal</div>
+      <a href="/docs/terms/refund-policy" aria-current="page">Refund policy</a>
+      <a href="https://dash.evevps.com/knowledgebase/18/Terms-of-Service.html" class="ext">Terms of service</a>
+      <a href="https://dash.evevps.com/knowledgebase/19/Privacy-Policy.html" class="ext">Privacy policy</a>
+    </div>
+  </aside>
+
+  <main>
+    <details class="mobile-nav">
+      <summary>Docs menu</summary>
+      <div class="inner">
+        <a href="/docs/getting-started/introduction">Introduction</a>
+        <a href="/docs/terms/refund-policy">Refund policy</a>
+        <a href="https://dash.evevps.com/clientarea.php">Client area</a>
+        <a href="https://dash.evevps.com/knowledgebase">Knowledgebase</a>
+        <a href="https://dash.evevps.com/submitticket.php">Submit a ticket</a>
+      </div>
+    </details>
+
+    <div class="crumb" style="margin-top:24px">Terms</div>
+    <h1>Refund &amp; Cancellation Policy</h1>
+    <p class="lead">When you can get a refund, how refunds are paid, and how to cancel a Windows RDP or Linux VPS service.</p>
+
+    <div class="prose">
+      <p>This page sets out EVEVPS’s refund and cancellation rules in one place. It works alongside our <a href="https://dash.evevps.com/knowledgebase/18/Terms-of-Service.html">Terms of Service</a>. If the two ever conflict, the Terms of Service take priority.</p>
+    </div>
+
+    <h2 id="eligible"><a class="anchor" href="#eligible">When you can get a refund</a></h2>
+    <div class="prose"><p>EVEVPS servers are set up automatically, usually within 1 minute of payment confirming. You can get a refund in these cases:</p></div>
+    <ul class="list">
+      <li><strong>Server not delivered.</strong> If your server hasn’t been set up within <strong>24 hours</strong> of a confirmed payment, you’re entitled to a full refund. <a href="https://dash.evevps.com/submitticket.php">Open a support ticket</a> and we’ll process it.</li>
+      <li><strong>A payment you didn’t make.</strong> If someone paid from your account without your permission, contact us right away through a <a href="https://dash.evevps.com/submitticket.php">support ticket</a> or at support@evevps.com. We’ll investigate and secure your account, and refund the payment if we confirm you didn’t authorize it.</li>
+      <li><strong>A major change to our terms.</strong> If we make a significant change to our Terms of Service and you don’t accept it, you can end your services and ask for a prorated refund of your unused prepaid time.</li>
+    </ul>
+
+    <h2 id="not-eligible"><a class="anchor" href="#not-eligible">When a refund isn’t available</a></h2>
+    <ul class="list">
+      <li><strong>Delivered servers.</strong> Outside the cases above, a server that has been delivered isn’t refundable.</li>
+      <li><strong>Change of mind.</strong> Not liking the operating system, the performance, or how your workload fits the server doesn’t count as a delivery failure.</li>
+      <li><strong>Cancelling yourself.</strong> Cancelling a service from the client area doesn’t refund anything already paid. Choose <strong>End of billing period</strong> to keep your server until the paid term ends, or <strong>Immediate</strong> to give up the rest of the term.</li>
+      <li><strong>Terms violations.</strong> Services ended for breaking our Terms of Service or acceptable use rules aren’t refunded.</li>
+      <li><strong>Downgrades.</strong> Moving to a smaller plan takes effect from the next billing cycle and doesn’t refund part of the current one.</li>
+    </ul>
+
+    <h2 id="how-paid"><a class="anchor" href="#how-paid">How refunds are paid</a></h2>
+    <ul class="list">
+      <li><strong>Eligible refunds</strong> (a server not delivered within 24 hours, an unauthorized payment, or a prorated refund after a major terms change) are paid in cryptocurrency to a wallet address you give us, since all EVEVPS payments are made in crypto.</li>
+      <li><strong>Goodwill credit</strong>, such as compensation for downtime, is added to your <strong>account credit</strong> instead of being paid out. Account credit can be used for future EVEVPS services but can’t be withdrawn or transferred.</li>
+      <li><strong>Crypto overpayments</strong> are added to your account credit.</li>
+    </ul>
+
+    <h2 id="cancel"><a class="anchor" href="#cancel">How to cancel a service</a></h2>
+    <ol class="steps">
+      <li><strong>Log in</strong> to the <a href="https://dash.evevps.com/clientarea.php">client area</a>.</li>
+      <li><strong>Open the service.</strong> Go to Services → My Services and select the server.</li>
+      <li><strong>Request cancellation.</strong> Click Request Cancellation, choose End of billing period or Immediate, and submit.</li>
+    </ol>
+
+    <h2 id="request"><a class="anchor" href="#request">How to request a refund</a></h2>
+    <div class="prose"><p><a href="https://dash.evevps.com/submitticket.php">Open a support ticket</a> with your invoice number, the reason for your request and the wallet address for the refund. We usually review refund requests within 24–48 hours.</p></div>
+
+    <div class="note" role="note">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
+      <p>Questions about a payment? Email support@evevps.com or <a href="https://dash.evevps.com/submitticket.php">open a ticket</a>. We reply within 30 minutes.</p>
+    </div>
+
+    <p class="updated">Last updated: October 24, 2026</p>
+
+    <div class="pager" style="justify-content:flex-start">
+      <a href="/docs/getting-started/introduction" style="text-align:left"><small>Previous</small>← Introduction</a>
+    </div>
+  </main>
+
+  <nav class="toc" aria-label="On this page">
+    <div class="toc-title">On this page</div>
+    <a href="#eligible">When you can get a refund</a>
+    <a href="#not-eligible">When a refund isn’t available</a>
+    <a href="#how-paid">How refunds are paid</a>
+    <a href="#cancel">How to cancel</a>
+    <a href="#request">Request a refund</a>
+  </nav>
+</div>
+
+<footer>
+  <div class="foot-in">
+    <span>© 2026 EVEVPS. All rights reserved.</span>
+    <span><a href="/">evevps.com</a> · <a href="mailto:support@evevps.com">support@evevps.com</a></span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var links = document.querySelectorAll('.toc a');
+  var map = {};
+  links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+  if (!('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        links.forEach(function (a) { a.classList.remove('active'); });
+        var a = map[e.target.id];
+        if (a) a.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-80px 0px -70% 0px' });
+  Object.keys(map).forEach(function (id) {
+    var el = document.getElementById(id);
+    if (el) io.observe(el);
+  });
+})();
+</script>
+</body>
+</html>
