@@ -273,35 +273,35 @@ footer{border-top:1px solid var(--line);background:var(--bg2)}
       <div><span class="price">$11.99</span><span class="per">/mo</span></div>
       <div class="specs"><div>2 vCPU</div><div>4 GB RAM</div><div>50 GB SSD NVMe</div><div>Unlimited OS reinstall</div><div>Dedicated control panel</div></div>
       <div class="where"><span class="os-label">Windows Server 2019 / 2022 / 2025</span> · New York</div>
-      <a href="https://dash.evevps.com/cart.php?gid=2" class="btn btn-primary order">Order Silver</a>
+      <a href="https://dash.evevps.com/store/windows-rdp/silver" class="btn btn-primary order" data-plan="silver">Order Silver</a>
     </div>
     <div class="plan popular">
       <div class="plan-top"><h3>Gold</h3><span class="tag">Most popular</span></div>
       <div><span class="price">$22.39</span><span class="per">/mo</span></div>
       <div class="specs"><div>4 vCPU</div><div>8 GB RAM</div><div>100 GB SSD NVMe</div><div>Unlimited OS reinstall</div><div>Dedicated control panel</div></div>
       <div class="where"><span class="os-label">Windows Server 2019 / 2022 / 2025</span> · New York</div>
-      <a href="https://dash.evevps.com/cart.php?gid=2" class="btn btn-primary order">Order Gold</a>
+      <a href="https://dash.evevps.com/store/windows-rdp/gold" class="btn btn-primary order" data-plan="gold">Order Gold</a>
     </div>
     <div class="plan">
       <h3>Champion</h3>
       <div><span class="price">$35.99</span><span class="per">/mo</span></div>
       <div class="specs"><div>6 vCPU</div><div>16 GB RAM</div><div>130 GB SSD NVMe</div><div>Unlimited OS reinstall</div><div>Dedicated control panel</div></div>
       <div class="where"><span class="os-label">Windows Server 2019 / 2022 / 2025</span> · New York</div>
-      <a href="https://dash.evevps.com/cart.php?gid=2" class="btn btn-primary order">Order Champion</a>
+      <a href="https://dash.evevps.com/store/windows-rdp/champion" class="btn btn-primary order" data-plan="champion">Order Champion</a>
     </div>
     <div class="plan">
       <h3>Titan</h3>
       <div><span class="price">$49.99</span><span class="per">/mo</span></div>
       <div class="specs"><div>6 vCPU</div><div>32 GB RAM</div><div>150 GB SSD NVMe</div><div>Unlimited OS reinstall</div><div>Dedicated control panel</div></div>
       <div class="where"><span class="os-label">Windows Server 2019 / 2022 / 2025</span> · New York</div>
-      <a href="https://dash.evevps.com/cart.php?gid=2" class="btn btn-primary order">Order Titan</a>
+      <a href="https://dash.evevps.com/store/windows-rdp/titan" class="btn btn-primary order" data-plan="titan">Order Titan</a>
     </div>
     <div class="plan">
       <h3>Legend</h3>
       <div><span class="price">$75.99</span><span class="per">/mo</span></div>
       <div class="specs"><div>8 vCPU</div><div>64 GB RAM</div><div>200 GB SSD NVMe</div><div>Unlimited OS reinstall</div><div>Dedicated control panel</div></div>
       <div class="where"><span class="os-label">Windows Server 2019 / 2022 / 2025</span> · New York</div>
-      <a href="https://dash.evevps.com/cart.php?gid=2" class="btn btn-primary order">Order Legend</a>
+      <a href="https://dash.evevps.com/store/windows-rdp/legend" class="btn btn-primary order" data-plan="legend">Order Legend</a>
     </div>
   </div>
 
@@ -431,8 +431,8 @@ footer{border-top:1px solid var(--line);background:var(--bg2)}
     </div>
     <div>
       <div class="foot-title">PRODUCTS</div>
-      <a href="https://dash.evevps.com/cart.php?gid=2">Windows RDP</a>
-      <a href="https://dash.evevps.com/cart.php?gid=1">Linux VPS</a>
+      <a href="https://dash.evevps.com/store/windows-rdp">Windows RDP</a>
+      <a href="https://dash.evevps.com/store/linux-vps">Linux VPS</a>
       <a href="#pricing">Forex VPS</a>
       <a href="#pricing">Docker VPS</a>
     </div>
@@ -461,14 +461,14 @@ footer{border-top:1px solid var(--line);background:var(--bg2)}
 <script>
 (function () {
   var labels = {
-    windows: { os: 'Windows Server 2019 / 2022 / 2025', url: 'https://dash.evevps.com/cart.php?gid=2' },
-    linux:   { os: 'Ubuntu, Debian, AlmaLinux, Rocky + more', url: 'https://dash.evevps.com/cart.php?gid=1' }
+    windows: { os: 'Windows Server 2019 / 2022 / 2025', url: 'https://dash.evevps.com/store/windows-rdp' },
+    linux:   { os: 'Ubuntu, Debian, AlmaLinux, Rocky + more', url: 'https://dash.evevps.com/store/linux-vps' }
   };
   var buttons = document.querySelectorAll('.toggle button');
   function setProduct(p) {
     buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.set === p)); });
     document.querySelectorAll('.os-label').forEach(function (el) { el.textContent = labels[p].os; });
-    document.querySelectorAll('.order').forEach(function (a) { a.href = labels[p].url; });
+    document.querySelectorAll('.order').forEach(function (a) { a.href = labels[p].url + '/' + a.dataset.plan; });
   }
   buttons.forEach(function (b) { b.addEventListener('click', function () { setProduct(b.dataset.set); }); });
   document.querySelectorAll('[data-product]').forEach(function (a) {
