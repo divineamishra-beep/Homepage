@@ -1,0 +1,15 @@
+{
+  "rewrites": [
+    {
+      "source": "/docs/getting-started/introduction",
+      "destination": "/docs-introduction.html"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/docs",
+      "destination": "/docs/getting-started/introduction",
+      "permanent": false
+    }
+  ]
+}

@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Introduction — EVEVPS Docs</title>
+<meta name="description" content="EVEVPS sells Windows RDP and Linux VPS servers in New York with NVMe SSD storage, DDoS protection and automatic setup in about a minute.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A0E13; --bg2:#0D1218; --surface:#11171F; --line:#1C2530; --line2:#222C38;
+  --text:#E6EBF0; --soft:#C9D2DC; --muted:#A7B3C0; --dim:#93A1B0;
+  --accent:#6E5CF6; --ink:#A89DFA; --tint:#16132B;
+  --display:"Space Grotesk",Inter,system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.65}
+a{color:var(--ink);text-decoration:none}
+a:hover{color:#fff}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+h1,h2,h3{font-family:var(--display);color:#fff;margin:0}
+p{margin:0}
+code{font-family:var(--mono);font-size:.88em;background:#161E28;border:1px solid var(--line2);border-radius:6px;padding:1px 6px;color:#E6EBF0}
+
+/* top bar */
+.top{position:sticky;top:0;z-index:20;background:rgba(10,14,19,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top-in{max-width:1440px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{display:block;height:34px;width:auto}
+.brand span{font-family:var(--mono);font-size:12px;letter-spacing:1.5px;color:var(--dim);border-left:1px solid var(--line2);padding-left:12px}
+.top-links{display:flex;flex-wrap:wrap;align-items:center;gap:8px 20px;font-size:14px;font-weight:500}
+.top-links a{color:var(--soft)}
+.top-links a:hover{color:#fff}
+.btn{display:inline-block;padding:9px 16px;border-radius:10px;font-weight:600;font-size:14px}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:#5D4BEA;color:#fff}
+
+/* layout */
+.layout{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:260px minmax(0,1fr) 220px;gap:48px;padding:0 24px}
+.side{position:sticky;top:64px;align-self:start;height:calc(100vh - 64px);overflow-y:auto;padding:32px 0}
+.group{margin-bottom:28px}
+.group-title{font-family:var(--mono);font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim);margin-bottom:10px}
+.side a{display:block;padding:7px 12px;margin-left:-12px;border-radius:8px;font-size:14px;color:var(--soft)}
+.side a:hover{background:var(--surface);color:#fff}
+.side a[aria-current="page"]{background:var(--tint);color:#fff;font-weight:600;box-shadow:inset 2px 0 0 var(--accent)}
+.side .ext::after{content:" ↗";color:var(--dim)}
+.mobile-nav{display:none}
+
+main{padding:40px 0 88px;min-width:0;max-width:800px}
+.crumb{font-family:var(--mono);font-size:13px;color:var(--ink);margin-bottom:10px}
+h1{font-size:44px;line-height:1.1;letter-spacing:-1px;margin-bottom:14px}
+.lead{font-size:19px;color:var(--muted);margin-bottom:28px}
+.prose p{color:var(--soft);margin-bottom:16px}
+.prose strong{color:#fff;font-weight:600}
+h2{font-size:28px;letter-spacing:-.5px;margin:56px 0 18px;padding-top:4px}
+h2 a.anchor{color:inherit}
+h2 a.anchor:hover::after{content:" #";color:var(--dim)}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.card{display:block;padding:20px;background:var(--surface);border:1px solid var(--line2);border-radius:14px;color:inherit}
+a.card:hover{border-color:var(--accent);color:inherit}
+.card svg{stroke:var(--accent);margin-bottom:12px;display:block}
+.card h3{font-size:17px;margin-bottom:6px}
+.card p{font-size:14px;color:var(--muted)}
+a.card h3::after{content:" →";color:var(--ink)}
+
+.table-wrap{overflow-x:auto;border:1px solid var(--line2);border-radius:14px}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--mono);font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);background:var(--bg2);font-weight:500}
+tr:last-child td{border-bottom:0}
+td{color:var(--soft)}
+td:first-child{color:#fff;font-weight:600}
+.pop{font-family:var(--mono);font-size:11px;padding:2px 8px;border-radius:999px;background:var(--accent);color:#fff;margin-left:6px;font-weight:500;vertical-align:1px}
+
+.steps{list-style:none;padding:0;margin:0;counter-reset:s}
+.steps li{counter-increment:s;position:relative;padding:0 0 22px 52px;color:var(--soft)}
+.steps li::before{content:counter(s);position:absolute;left:0;top:-2px;width:34px;height:34px;border-radius:50%;background:var(--tint);border:1px solid var(--accent);color:#fff;font:600 14px/32px var(--mono);text-align:center}
+.steps li:not(:last-child)::after{content:"";position:absolute;left:17px;top:36px;bottom:4px;width:1px;background:var(--line2)}
+.steps strong{color:#fff}
+
+.note{display:flex;gap:14px;margin-top:40px;padding:16px 18px;border:1px solid #2F2A5C;background:var(--tint);border-radius:14px;color:var(--soft);font-size:15px}
+.note svg{flex:none;stroke:var(--ink);margin-top:2px}
+
+.pager{display:flex;justify-content:flex-end;margin-top:56px;padding-top:24px;border-top:1px solid var(--line)}
+.pager a{display:block;padding:14px 18px;border:1px solid var(--line2);border-radius:12px;text-align:right;color:var(--text)}
+.pager a:hover{border-color:var(--accent)}
+.pager small{display:block;font-size:12px;color:var(--dim)}
+
+.toc{position:sticky;top:64px;align-self:start;padding:40px 0}
+.toc-title{font-family:var(--mono);font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim);margin-bottom:12px}
+.toc a{display:block;font-size:13px;color:var(--dim);padding:5px 0 5px 12px;border-left:1px solid var(--line2)}
+.toc a:hover{color:#fff}
+.toc a.active{color:#fff;border-left-color:var(--accent)}
+
+footer{border-top:1px solid var(--line);color:var(--dim);font-size:13px}
+.foot-in{max-width:1440px;margin:0 auto;padding:22px 24px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+footer a{color:var(--soft)}
+
+@media (max-width:1180px){
+  .layout{grid-template-columns:240px minmax(0,1fr)}
+  .toc{display:none}
+}
+@media (max-width:860px){
+  .layout{grid-template-columns:minmax(0,1fr);gap:0}
+  .side{display:none}
+  .mobile-nav{display:block;margin:20px 0 0;border:1px solid var(--line2);border-radius:12px;background:var(--surface)}
+  .mobile-nav summary{cursor:pointer;padding:12px 16px;font-weight:600;font-size:14px;list-style:none}
+  .mobile-nav summary::after{content:" ▾";color:var(--dim)}
+  .mobile-nav .inner{padding:4px 16px 12px}
+  .mobile-nav a{display:block;padding:7px 0;color:var(--soft);font-size:14px}
+  .top-links .hide-sm{display:none}
+  h1{font-size:34px}
+  h2{font-size:24px}
+  main{padding-top:24px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <a href="/" class="brand"><img src="/logo.png" alt="EVEVPS" width="90" height="34"><span>DOCS</span></a>
+    <nav class="top-links" aria-label="Site">
+      <a href="/" class="hide-sm">Home</a>
+      <a href="/#pricing" class="hide-sm">Pricing</a>
+      <a href="https://dash.evevps.com/login.php">Log in</a>
+      <a href="https://dash.evevps.com/cart.php" class="btn btn-primary">Deploy server →</a>
+    </nav>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="side" aria-label="Documentation">
+    <div class="group">
+      <div class="group-title">Getting started</div>
+      <a href="/docs/getting-started/introduction" aria-current="page">Introduction</a>
+      <a href="#plans">Plans and pricing</a>
+      <a href="#deploy">Deploy a server</a>
+      <a href="#infrastructure">Infrastructure</a>
+    </div>
+    <div class="group">
+      <div class="group-title">Products</div>
+      <a href="https://dash.evevps.com/cart.php?gid=2" class="ext">Windows RDP</a>
+      <a href="https://dash.evevps.com/cart.php?gid=1" class="ext">Linux VPS</a>
+    </div>
+    <div class="group">
+      <div class="group-title">Account &amp; support</div>
+      <a href="https://dash.evevps.com/clientarea.php" class="ext">Client area</a>
+      <a href="https://dash.evevps.com/knowledgebase" class="ext">Knowledgebase</a>
+      <a href="https://dash.evevps.com/serverstatus.php" class="ext">Network status</a>
+      <a href="https://dash.evevps.com/submitticket.php" class="ext">Submit a ticket</a>
+    </div>
+    <div class="group">
+      <div class="group-title">Legal</div>
+      <a href="https://dash.evevps.com/knowledgebase/18/Terms-of-Service.html" class="ext">Terms of service</a>
+      <a href="https://dash.evevps.com/knowledgebase/19/Privacy-Policy.html" class="ext">Privacy policy</a>
+    </div>
+  </aside>
+
+  <main>
+    <details class="mobile-nav">
+      <summary>Docs menu</summary>
+      <div class="inner">
+        <a href="#plans">Plans and pricing</a>
+        <a href="#deploy">Deploy a server</a>
+        <a href="#infrastructure">Infrastructure</a>
+        <a href="https://dash.evevps.com/clientarea.php">Client area</a>
+        <a href="https://dash.evevps.com/knowledgebase">Knowledgebase</a>
+        <a href="https://dash.evevps.com/submitticket.php">Submit a ticket</a>
+      </div>
+    </details>
+
+    <div class="crumb" style="margin-top:24px">Getting started</div>
+    <h1>Welcome to EVEVPS</h1>
+    <p class="lead">Windows RDP and Linux VPS servers in New York with NVMe SSD storage, DDoS protection and automatic setup in about a minute.</p>
+
+    <div class="prose">
+      <p><strong>EVEVPS</strong> sells Windows VPS servers, which you use over the Remote Desktop Protocol (RDP), and Linux VPS servers, all hosted in our New York datacenter. Choose a plan and an operating system, pay with crypto, and the server sets itself up on its own. Your login details are usually emailed to you within <strong>1 minute</strong> of payment.</p>
+      <p>Every plan includes NVMe SSD storage, DDoS protection, a dedicated IPv4 address, unlimited OS reinstalls, a dedicated control panel, and full <code>Administrator</code> or <code>root</code> access. You manage everything from the <a href="https://dash.evevps.com/clientarea.php">client area</a>.</p>
+    </div>
+
+    <h2 id="what"><a class="anchor" href="#what">What is EVEVPS?</a></h2>
+    <div class="cards">
+      <a class="card" href="https://dash.evevps.com/cart.php?gid=2">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        <h3>Windows RDP</h3>
+        <p>Windows Server with full Administrator access, for trading terminals, Windows apps, automation and remote work.</p>
+      </a>
+      <a class="card" href="https://dash.evevps.com/cart.php?gid=1">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 17 6-6-6-6M12 19h8"/></svg>
+        <h3>Linux VPS</h3>
+        <p>KVM Linux servers with root access. Ubuntu, Debian, AlmaLinux, Rocky Linux and more.</p>
+      </a>
+    </div>
+
+    <h2 id="why"><a class="anchor" href="#why">Why choose EVEVPS?</a></h2>
+    <div class="cards">
+      <div class="card">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></svg>
+        <h3>Automatic setup</h3>
+        <p>Your server is built as soon as payment confirms. Login details usually arrive by email within 1 minute.</p>
+      </div>
+      <div class="card">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 5 3.4 8.4 8 9 4.6-.6 8-4 8-9V6l-8-3z"/><path d="m9 12 2 2 4-4"/></svg>
+        <h3>DDoS protection included</h3>
+        <p>Always-on network filtering comes with every plan at no extra cost.</p>
+      </div>
+      <div class="card">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 8.5h4a2 2 0 0 1 0 4h-4m0 0h4.5a2 2 0 0 1 0 4H9.5m0-8v8M11 6.5v2M11 16.5v2"/></svg>
+        <h3>Crypto payments</h3>
+        <p>Pay for your server with cryptocurrency. Invoices are available in your client area.</p>
+      </div>
+      <div class="card">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg>
+        <h3>NVMe SSD storage</h3>
+        <p>Every plan runs on NVMe SSD drives for fast boot times, databases and apps.</p>
+      </div>
+      <div class="card">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+        <h3>New York datacenter</h3>
+        <p>All servers run in New York, USA, with a 1 Gbps uplink.</p>
+      </div>
+      <div class="card">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.4A8 8 0 1 1 21 12z"/></svg>
+        <h3>Fast human support</h3>
+        <p>Email support@evevps.com or open a ticket. We reply within 30 minutes.</p>
+      </div>
+    </div>
+
+    <h2 id="plans"><a class="anchor" href="#plans">Plans and pricing</a></h2>
+    <div class="prose"><p>Five plans, all billed monthly in USD. Every plan is available as Windows RDP or Linux VPS at the same price.</p></div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Plan</th><th>vCPU</th><th>RAM</th><th>NVMe SSD</th><th>Price</th></tr></thead>
+        <tbody>
+          <tr><td>Silver</td><td>2</td><td>4 GB</td><td>50 GB</td><td>$11.99/mo</td></tr>
+          <tr><td>Gold <span class="pop">Popular</span></td><td>4</td><td>8 GB</td><td>100 GB</td><td>$22.39/mo</td></tr>
+          <tr><td>Champion</td><td>6</td><td>16 GB</td><td>130 GB</td><td>$35.99/mo</td></tr>
+          <tr><td>Titan</td><td>6</td><td>32 GB</td><td>150 GB</td><td>$49.99/mo</td></tr>
+          <tr><td>Legend</td><td>8</td><td>64 GB</td><td>200 GB</td><td>$75.99/mo</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="deploy"><a class="anchor" href="#deploy">Deploy a server</a></h2>
+    <ol class="steps">
+      <li><strong>Pick a product.</strong> Open the store and choose <a href="https://dash.evevps.com/cart.php?gid=2">Windows RDP</a> or <a href="https://dash.evevps.com/cart.php?gid=1">Linux VPS</a>.</li>
+      <li><strong>Choose a plan and OS.</strong> Select the plan size and the operating system you want installed.</li>
+      <li><strong>Pay with crypto.</strong> Check out and pay the invoice. Setup starts as soon as payment confirms.</li>
+      <li><strong>Connect.</strong> Your IP address and login details arrive by email, usually within 1 minute. Connect over RDP (Windows) or SSH (Linux).</li>
+    </ol>
+
+    <h2 id="links"><a class="anchor" href="#links">Quick links</a></h2>
+    <div class="cards">
+      <a class="card" href="https://dash.evevps.com/clientarea.php"><h3>Client area</h3><p>Deploy and manage servers, pay invoices.</p></a>
+      <a class="card" href="https://dash.evevps.com/cart.php"><h3>Store</h3><p>Order a new server from $11.99/mo.</p></a>
+      <a class="card" href="https://dash.evevps.com/knowledgebase"><h3>Knowledgebase</h3><p>Guides and answers to common questions.</p></a>
+      <a class="card" href="https://dash.evevps.com/submitticket.php"><h3>Support</h3><p>Open a ticket or email support@evevps.com.</p></a>
+    </div>
+
+    <h2 id="infrastructure"><a class="anchor" href="#infrastructure">Infrastructure at a glance</a></h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Feature</th><th>Specification</th></tr></thead>
+        <tbody>
+          <tr><td>Virtualization</td><td>KVM (Kernel-based Virtual Machine)</td></tr>
+          <tr><td>Storage</td><td>NVMe SSD on every plan</td></tr>
+          <tr><td>Network</td><td>1 Gbps port, dedicated IPv4 address</td></tr>
+          <tr><td>DDoS protection</td><td>Included on every plan</td></tr>
+          <tr><td>Location</td><td>New York, USA</td></tr>
+          <tr><td>Operating systems</td><td>Windows Server 2019 / 2022 / 2025, Ubuntu, Debian, AlmaLinux, Rocky Linux, CentOS Stream, Fedora, Alpine</td></tr>
+          <tr><td>Access</td><td>Full Administrator (Windows) or root (Linux)</td></tr>
+          <tr><td>Status</td><td>Live on our <a href="https://dash.evevps.com/serverstatus.php">network status page</a></td></tr>
+          <tr><td>Support</td><td>Tickets and email at support@evevps.com, replies within 30 minutes</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note" role="note">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
+      <p>Need help getting started? Browse the <a href="https://dash.evevps.com/knowledgebase">knowledgebase</a> or <a href="https://dash.evevps.com/submitticket.php">contact support</a>.</p>
+    </div>
+
+    <div class="pager">
+      <a href="#plans"><small>Next</small>Plans and pricing →</a>
+    </div>
+  </main>
+
+  <nav class="toc" aria-label="On this page">
+    <div class="toc-title">On this page</div>
+    <a href="#what">What is EVEVPS?</a>
+    <a href="#why">Why choose EVEVPS?</a>
+    <a href="#plans">Plans and pricing</a>
+    <a href="#deploy">Deploy a server</a>
+    <a href="#links">Quick links</a>
+    <a href="#infrastructure">Infrastructure</a>
+  </nav>
+</div>
+
+<footer>
+  <div class="foot-in">
+    <span>© 2026 EVEVPS. All rights reserved.</span>
+    <span><a href="/">evevps.com</a> · <a href="mailto:support@evevps.com">support@evevps.com</a></span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var links = document.querySelectorAll('.toc a');
+  var map = {};
+  links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+  if (!('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        links.forEach(function (a) { a.classList.remove('active'); });
+        var a = map[e.target.id];
+        if (a) a.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-80px 0px -70% 0px' });
+  Object.keys(map).forEach(function (id) {
+    var el = document.getElementById(id);
+    if (el) io.observe(el);
+  });
+})();
+</script>
+</body>
+</html>
