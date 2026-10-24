@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>EveVps — Windows RDP &amp; Linux VPS Hosting</title>
+<title>EVEVPS — Windows RDP &amp; Linux VPS Hosting</title>
 <meta name="description" content="Deploy a Windows RDP or Linux VPS in New York with full admin or root access, dedicated IPv4 and NVMe SSD storage. From $11.99/mo.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -73,6 +73,9 @@ header{border-bottom:1px solid var(--line)}
 @keyframes blink{50%{opacity:0}}
 
 /* os strip */
+.os img{display:block;width:30px;height:30px;opacity:.85;transition:opacity .15s,transform .15s}
+.os img:hover{opacity:1;transform:translateY(-2px)}
+@media (prefers-reduced-motion:reduce){.os img{transition:none}.os img:hover{transform:none}}
 .os{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px 28px;padding-top:22px;padding-bottom:22px;font-family:var(--mono);font-size:14px;color:var(--muted)}
 
 /* grids */
@@ -175,7 +178,7 @@ footer{border-top:1px solid var(--line);background:var(--bg2)}
 
 <header>
 <div class="wrap nav">
-  <a href="/" class="logo"><img src="/logo.png" alt="EveVps — home" width="105" height="40"></a>
+  <a href="/" class="logo"><img src="/logo.png" alt="EVEVPS — home" width="105" height="40"></a>
   <nav aria-label="Main">
     <a href="#top">Home</a>
     <a href="#pricing">Pricing</a>
@@ -201,7 +204,7 @@ footer{border-top:1px solid var(--line);background:var(--bg2)}
     <p class="hero-sub">Deploy a Windows RDP or Linux VPS with full Administrator or root access, dedicated IPv4 and NVMe SSD storage. Pick a plan, pay, and your login details land in your inbox.</p>
     <div class="ctas">
       <a href="#pricing" class="btn btn-primary">See plans &amp; deploy</a>
-      <a href="#features" class="btn btn-outline">Why EveVps</a>
+      <a href="#features" class="btn btn-outline">Why EVEVPS</a>
     </div>
     <div class="hero-meta">
       <span>Starting at <strong>$11.99/mo</strong></span>
@@ -238,7 +241,7 @@ footer{border-top:1px solid var(--line);background:var(--bg2)}
 <section class="alt" aria-label="Supported operating systems">
   <div class="wrap os">
     <span style="color:var(--dim)">Runs on</span>
-    <span>Windows Server</span><span>Ubuntu</span><span>Debian</span><span>AlmaLinux</span><span>Rocky Linux</span><span>CentOS Stream</span><span>Fedora</span><span>Alpine</span>
+    <img src="https://api.iconify.design/mdi/microsoft-windows.svg?color=%23A89DFA" alt="Windows Server" title="Windows Server" width="30" height="30" loading="lazy"><img src="https://api.iconify.design/simple-icons/ubuntu.svg?color=%23A89DFA" alt="Ubuntu" title="Ubuntu" width="30" height="30" loading="lazy"><img src="https://api.iconify.design/simple-icons/debian.svg?color=%23A89DFA" alt="Debian" title="Debian" width="30" height="30" loading="lazy"><img src="https://api.iconify.design/simple-icons/almalinux.svg?color=%23A89DFA" alt="AlmaLinux" title="AlmaLinux" width="30" height="30" loading="lazy"><img src="https://api.iconify.design/simple-icons/rockylinux.svg?color=%23A89DFA" alt="Rocky Linux" title="Rocky Linux" width="30" height="30" loading="lazy"><img src="https://api.iconify.design/simple-icons/centos.svg?color=%23A89DFA" alt="CentOS Stream" title="CentOS Stream" width="30" height="30" loading="lazy"><img src="https://api.iconify.design/simple-icons/fedora.svg?color=%23A89DFA" alt="Fedora" title="Fedora" width="30" height="30" loading="lazy"><img src="https://api.iconify.design/simple-icons/alpinelinux.svg?color=%23A89DFA" alt="Alpine Linux" title="Alpine Linux" width="30" height="30" loading="lazy">
   </div>
 </section>
 
@@ -321,7 +324,7 @@ footer{border-top:1px solid var(--line);background:var(--bg2)}
 </section>
 
 <section id="features" class="wrap section">
-  <div class="eyebrow">Why EveVps</div>
+  <div class="eyebrow">Why EVEVPS</div>
   <h2 class="h2">Built for speed. Run like it’s your own hardware.</h2>
   <div class="grid features">
     <div class="feature">
@@ -422,7 +425,7 @@ footer{border-top:1px solid var(--line);background:var(--bg2)}
 <div class="wrap">
   <div class="foot">
     <div>
-      <a href="/" class="logo"><img src="/logo.png" alt="EveVps — home" width="90" height="34"></a>
+      <a href="/" class="logo"><img src="/logo.png" alt="EVEVPS — home" width="90" height="34"></a>
       <p>Fast Windows RDP and Linux VPS hosting.</p>
       <a href="mailto:support@evevps.com">support@evevps.com</a>
     </div>
@@ -449,7 +452,7 @@ footer{border-top:1px solid var(--line);background:var(--bg2)}
     </div>
   </div>
   <div class="copy">
-    <span>© 2026 EveVps. All rights reserved.</span>
+    <span>© 2026 EVEVPS. All rights reserved.</span>
     <span>Payments: Crypto</span>
   </div>
 </div>
