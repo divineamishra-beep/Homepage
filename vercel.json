@@ -11,6 +11,10 @@
     {
       "source": "/docs/about/about-us",
       "destination": "/docs-about-us.html"
+    },
+    {
+      "source": "/status",
+      "destination": "/status.html"
     }
   ],
   "redirects": [
