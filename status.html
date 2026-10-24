@@ -316,6 +316,8 @@ footer a{color:var(--soft)}
       data.monitors.forEach(function (m) {
         var st = m.status === 2 ? 'up' : (m.status === 8 || m.status === 9) ? 'down' : m.status === 0 ? 'paused' : 'unknown';
         var daily = String(m.custom_uptime_ranges || '').split('-').map(parseFloat);
+        var created = m.create_datetime || 0;
+        daily = daily.map(function (u, i) { return start0 + (i + 1) * 86400 <= created ? NaN : u; });
         var s = { name: m.friendly_name, state: st, uptime: parseFloat(m.custom_uptime_ratio), daily: daily };
         var lower = m.friendly_name.toLowerCase();
         var isPlatform = PLATFORM_WORDS.some(function (w) { return lower.indexOf(w) !== -1; });
