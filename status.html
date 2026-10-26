@@ -100,6 +100,27 @@ footer a{color:var(--soft)}
   .hero h1{font-size:34px}
   .bars{gap:1px;height:28px}
 }
+/* phones */
+.menu-btn{display:none}
+@media (max-width:860px){
+  .menu-btn{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid var(--line2);border-radius:10px;background:transparent;color:#fff;cursor:pointer}
+  .nav{gap:12px;padding-top:12px;padding-bottom:12px}
+  .nav nav,.nav .nav-actions{display:none;width:100%}
+  .nav.open nav{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line)}
+  .nav.open nav a{padding:14px 2px;font-size:16px;border-bottom:1px solid var(--line);box-shadow:none}
+  .nav.open nav a[aria-current="page"]{color:var(--ink)}
+  .nav.open .nav-actions{display:flex;gap:10px;padding:4px 0 8px}
+  .nav.open .nav-actions a{flex:1;text-align:center;padding:13px 12px}
+  .logo img{height:34px;width:auto}
+}
+@media (max-width:640px){
+  .wrap{padding-left:20px;padding-right:20px}
+  .hero{padding-top:40px;padding-bottom:24px}
+  .hero p{font-size:16px}
+  .overview,.group,.incidents,.help{padding:20px}
+  .counts strong{font-size:26px}
+  .help a.btn{width:100%;text-align:center}
+}
 </style>
 </head>
 <body>
@@ -107,6 +128,7 @@ footer a{color:var(--soft)}
 <header>
   <div class="wrap nav">
     <a href="/" class="logo"><img src="/logo.png" alt="EveVps — home" width="105" height="40"></a>
+    <button type="button" class="menu-btn" aria-expanded="false" aria-label="Open menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
     <nav aria-label="Main">
       <a href="/">Home</a>
       <a href="/#pricing">Pricing</a>
@@ -389,6 +411,16 @@ footer a{color:var(--soft)}
   }
   refresh();
   setInterval(refresh, REFRESH_MS);
+})();
+</script>
+<script>
+(function () {
+  var b = document.querySelector('.menu-btn');
+  if (!b) return;
+  var n = b.closest('.nav');
+  function set(o) { n.classList.toggle('open', o); b.setAttribute('aria-expanded', String(o)); b.setAttribute('aria-label', o ? 'Close menu' : 'Open menu'); }
+  b.addEventListener('click', function () { set(!n.classList.contains('open')); });
+  n.querySelectorAll('nav a, .nav-actions a').forEach(function (a) { a.addEventListener('click', function () { set(false); }); });
 })();
 </script>
 </body>
