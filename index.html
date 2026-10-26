@@ -174,6 +174,49 @@ footer{border-top:1px solid var(--line);background:var(--bg2)}
   .cursor{animation:none}
   .faq-item .plus{transition:none}
 }
+
+/* phones */
+.menu-btn{display:none}
+@media (max-width:860px){
+  .menu-btn{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid var(--line2);border-radius:10px;background:transparent;color:#fff;cursor:pointer}
+  .nav{gap:12px;padding-top:12px;padding-bottom:12px}
+  .nav nav,.nav .nav-actions{display:none;width:100%}
+  .nav.open nav{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line)}
+  .nav.open nav a{padding:14px 2px;font-size:16px;border-bottom:1px solid var(--line)}
+  .nav.open .nav-actions{display:flex;gap:10px;padding:4px 0 8px}
+  .nav.open .nav-actions a{flex:1;text-align:center;padding:13px 12px}
+  .logo img{height:34px;width:auto}
+}
+@media (max-width:640px){
+  .wrap{padding-left:20px;padding-right:20px}
+  .hero{gap:36px;padding-top:40px;padding-bottom:48px}
+  .hero h1{font-size:38px;letter-spacing:-1px}
+  .hero-sub{font-size:17px}
+  .pill{font-size:12px}
+  .ctas .btn{flex:1 1 100%}
+  .hero-meta{flex-direction:column;gap:6px}
+  .panel{max-width:none}
+  .facts div{padding:14px 16px}
+  .facts span{font-size:14px}
+  .term{font-size:12px;margin:10px 16px 16px}
+  .os{justify-content:center;gap:16px 22px}
+  .os span:first-child{width:100%;text-align:center}
+  .uses{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding-top:56px}
+  .use{padding:16px}
+  .pricing,.section{padding-top:64px;padding-bottom:64px}
+  .h2{font-size:30px;margin-bottom:28px}
+  .pricing-head .toggle{width:100%}
+  .toggle button{flex:1}
+  .card,.feature{padding:22px}
+  .locations{gap:28px}
+  .faq{padding:64px 20px}
+  .faq-item button{font-size:16px;min-height:56px}
+  .cta{padding:28px 22px;border-radius:20px}
+  .cta-wrap{padding-bottom:64px}
+  .foot{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 20px;padding-top:44px}
+  .foot > div:first-child{grid-column:1 / -1}
+  .copy{flex-direction:column}
+}
 </style>
 </head>
 <body>
@@ -181,6 +224,7 @@ footer{border-top:1px solid var(--line);background:var(--bg2)}
 <header>
 <div class="wrap nav">
   <a href="/" class="logo"><img src="/logo.png" alt="EveVps — home" width="105" height="40"></a>
+  <button type="button" class="menu-btn" aria-expanded="false" aria-label="Open menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
   <nav aria-label="Main">
     <a href="#top">Home</a>
     <a href="#pricing">Pricing</a>
@@ -491,6 +535,16 @@ footer{border-top:1px solid var(--line);background:var(--bg2)}
       }
     });
   });
+})();
+</script>
+<script>
+(function () {
+  var b = document.querySelector('.menu-btn');
+  if (!b) return;
+  var n = b.closest('.nav');
+  function set(o) { n.classList.toggle('open', o); b.setAttribute('aria-expanded', String(o)); b.setAttribute('aria-label', o ? 'Close menu' : 'Open menu'); }
+  b.addEventListener('click', function () { set(!n.classList.contains('open')); });
+  n.querySelectorAll('nav a, .nav-actions a').forEach(function (a) { a.addEventListener('click', function () { set(false); }); });
 })();
 </script>
 </body>
