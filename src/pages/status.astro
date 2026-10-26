@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+<title>Server Status — EveVps</title>
+<meta name="description" content="Live EveVps service status, current availability and 90-day uptime history for our New York servers and platform services.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style is:global>
+:root{
+  --bg:#0A0E13; --bg2:#0D1218; --surface:#11171F; --line:#1C2530; --line2:#222C38;
+  --text:#E6EBF0; --soft:#C9D2DC; --muted:#A7B3C0; --dim:#93A1B0;
+  --accent:#6E5CF6; --ink:#A89DFA; --tint:#16132B;
+  --ok:#3DDC97; --warn:#F5C451; --part:#F59E42; --down:#F0616D; --maint:#5AB2FF; --none:#263140;
+  --display:"Space Grotesk",Inter,system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.55}
+a{color:var(--ink);text-decoration:none}
+a:hover{color:#fff}
+a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+h1,h2,h3{font-family:var(--display);color:#fff;margin:0}
+p{margin:0}
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+
+header{border-bottom:1px solid var(--line)}
+.nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding-top:16px;padding-bottom:16px}
+.logo img{display:block;height:40px;width:auto}
+.nav nav{display:flex;flex-wrap:wrap;gap:6px 24px;font-size:15px;font-weight:500}
+.nav nav a{color:var(--soft);padding:10px 0}
+.nav nav a[aria-current="page"]{color:#fff;box-shadow:inset 0 -2px 0 var(--accent)}
+.nav-actions{display:flex;gap:10px;align-items:center}
+.nav-actions a{padding:11px 16px;font-size:15px;border-radius:10px;color:var(--text)}
+.btn-primary{background:var(--accent);color:#fff!important;font-weight:600}
+.btn-primary:hover{background:#5D4BEA}
+
+.hero{padding:64px 0 32px}
+.eyebrow{font-family:var(--mono);font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--ink)}
+.hero h1{font-size:48px;line-height:1.08;letter-spacing:-1px;margin:12px 0 14px;max-width:760px}
+.hero p{font-size:18px;color:var(--muted);max-width:640px}
+
+.card{background:var(--surface);border:1px solid var(--line2);border-radius:18px}
+.overview{padding:24px;margin-bottom:28px}
+.banner{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.pulse{width:14px;height:14px;border-radius:50%;background:var(--none);flex:none}
+.banner h2{font-size:24px}
+.meta{margin-top:6px;font-size:14px;color:var(--dim)}
+.counts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:22px}
+.counts div{background:var(--bg2);padding:16px 18px}
+.counts small{display:block;font-family:var(--mono);font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--dim)}
+.counts strong{font-family:var(--display);font-size:30px;color:#fff}
+
+.group{padding:24px;margin-bottom:28px}
+.group-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:6px}
+.group-head h2{font-size:22px}
+.group-head span{font-size:14px;color:var(--dim)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;list-style:none;padding:0;margin:8px 0 18px;font-size:13px;color:var(--muted)}
+.legend li{display:flex;align-items:center;gap:7px}
+.legend i{width:10px;height:10px;border-radius:3px;display:inline-block}
+.svc{padding:16px 0;border-top:1px solid var(--line)}
+.svc-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px;margin-bottom:10px}
+.svc-name{display:flex;align-items:center;gap:10px;font-weight:600;color:#fff}
+.svc-name i{width:10px;height:10px;border-radius:50%;display:inline-block}
+.svc-up{font-family:var(--mono);font-size:13px;color:var(--soft)}
+.svc-state{font-size:13px;color:var(--dim)}
+.bars{display:flex;gap:2px;height:34px;align-items:stretch}
+.bars span{flex:1;border-radius:2px;min-width:2px;background:var(--none)}
+.bars span:hover{opacity:.7}
+.axis{display:flex;justify-content:space-between;margin-top:8px;font-size:12px;color:var(--dim)}
+
+.incidents{padding:24px;margin-bottom:28px}
+.sum{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:16px 0 8px}
+.sum div{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.sum small{display:block;font-size:12px;color:var(--dim);font-family:var(--mono);letter-spacing:1px;text-transform:uppercase}
+.sum strong{font-family:var(--display);font-size:22px;color:#fff}
+.inc{list-style:none;padding:0;margin:0}
+.inc li{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;padding:14px 0;border-top:1px solid var(--line)}
+.inc b{color:#fff;font-weight:600}
+.inc span{font-size:14px;color:var(--muted)}
+.tag{font-family:var(--mono);font-size:12px;padding:3px 10px;border-radius:999px;background:#13261E;color:var(--ok);align-self:center}
+.empty{padding:18px 0 4px;color:var(--muted);font-size:15px}
+.more{margin-top:12px;background:none;border:1px solid var(--line2);color:var(--soft);border-radius:10px;padding:10px 16px;font:600 14px Inter,system-ui,sans-serif;cursor:pointer;min-height:44px}
+.more:hover{border-color:var(--accent);color:#fff}
+
+.help{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;padding:24px;margin-bottom:64px}
+.help p{color:var(--muted)}
+.help a.btn{display:inline-block;padding:12px 20px;border-radius:12px;font-weight:600;background:var(--accent);color:#fff}
+
+footer{border-top:1px solid var(--line);background:var(--bg2);font-size:13px;color:var(--dim)}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-top:22px;padding-bottom:22px}
+footer a{color:var(--soft)}
+
+[hidden]{display:none!important}
+@media (max-width:640px){
+  .hero h1{font-size:34px}
+  .bars{gap:1px;height:28px}
+}
+/* phones */
+.menu-btn{display:none}
+@media (max-width:860px){
+  .menu-btn{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid var(--line2);border-radius:10px;background:transparent;color:#fff;cursor:pointer}
+  .nav{gap:12px;padding-top:12px;padding-bottom:12px}
+  .nav nav,.nav .nav-actions{display:none;width:100%}
+  .nav.open nav{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line)}
+  .nav.open nav a{padding:14px 2px;font-size:16px;border-bottom:1px solid var(--line);box-shadow:none}
+  .nav.open nav a[aria-current="page"]{color:var(--ink)}
+  .nav.open .nav-actions{display:flex;gap:10px;padding:4px 0 8px}
+  .nav.open .nav-actions a{flex:1;text-align:center;padding:13px 12px}
+  .logo img{height:34px;width:auto}
+}
+@media (max-width:640px){
+  .wrap{padding-left:20px;padding-right:20px}
+  .hero{padding-top:40px;padding-bottom:24px}
+  .hero p{font-size:16px}
+  .overview,.group,.incidents,.help{padding:20px}
+  .counts strong{font-size:26px}
+  .help a.btn{width:100%;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="/" class="logo"><img src="/logo.png" alt="EveVps — home" width="105" height="40"></a>
+    <button type="button" class="menu-btn" aria-expanded="false" aria-label="Open menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <nav aria-label="Main">
+      <a href="/">Home</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/#locations">Locations</a>
+      <a href="/status" aria-current="page">Status</a>
+      <a href="/docs/getting-started/introduction">Docs</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="https://dash.evevps.com/login.php">Log in</a>
+      <a href="https://dash.evevps.com/cart.php" class="btn-primary">Deploy server →</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="eyebrow">Live infrastructure status</div>
+    <h1>Check every EveVps service before you open a ticket.</h1>
+    <p>Current state, daily uptime for the last 90 days and recent incidents for our New York servers and platform services.</p>
+  </section>
+
+  <section class="card overview" aria-labelledby="ov-title" aria-live="polite">
+    <div class="banner">
+      <span class="pulse" id="pulse"></span>
+      <h2 id="ov-title">Checking services…</h2>
+    </div>
+    <p class="meta" id="updated">Loading live data</p>
+    <div class="counts">
+      <div><small>Total services</small><strong id="c-total">–</strong></div>
+      <div><small>Operational</small><strong id="c-up">–</strong></div>
+      <div><small>Down</small><strong id="c-down">–</strong></div>
+      <div><small>Paused / unknown</small><strong id="c-unk">–</strong></div>
+    </div>
+  </section>
+
+  <section class="card group" id="g-servers" hidden aria-labelledby="gs-title">
+    <div class="group-head"><h2 id="gs-title">USA servers — New York</h2><span>Last 90 days</span></div>
+    <ul class="legend">
+      <li><i style="background:var(--ok)"></i>Operational</li>
+      <li><i style="background:var(--warn)"></i>Degraded performance</li>
+      <li><i style="background:var(--part)"></i>Partial outage</li>
+      <li><i style="background:var(--down)"></i>Major outage</li>
+      <li><i style="background:var(--none)"></i>No data</li>
+    </ul>
+    <div id="l-servers"></div>
+    <div class="axis"><span>90 days ago</span><span>Today</span></div>
+  </section>
+
+  <section class="card group" aria-labelledby="gp-title">
+    <div class="group-head"><h2 id="gp-title">Platform</h2><span id="gp-sub">Live check</span></div>
+    <div id="l-platform"></div>
+    <div class="axis" id="gp-axis" hidden><span>90 days ago</span><span>Today</span></div>
+  </section>
+
+  <section class="card incidents" id="g-inc" hidden aria-labelledby="gi-title">
+    <div class="group-head"><h2 id="gi-title">Recent history</h2><span>Last 90 days</span></div>
+    <div class="sum">
+      <div><small>Incidents</small><strong id="s-n">0</strong></div>
+      <div><small>Total downtime</small><strong id="s-d">0 min</strong></div>
+      <div><small>Services affected</small><strong id="s-a">0</strong></div>
+    </div>
+    <ul class="inc" id="l-inc"></ul>
+    <button type="button" class="more" id="more" hidden>Show more</button>
+  </section>
+
+  <section class="card help">
+    <p>Something not working and not listed here? Our team replies within 30 minutes.</p>
+    <a class="btn" href="https://dash.evevps.com/submitticket.php">Open a ticket</a>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 EveVps. All rights reserved.</span>
+    <span><a href="/">evevps.com</a> · <a href="/docs/getting-started/introduction">Docs</a> · <a href="mailto:support@evevps.com">support@evevps.com</a></span>
+  </div>
+</footer>
+
+<script is:inline define:vars={{ UPTIMEROBOT_KEY: import.meta.env.PUBLIC_UPTIMEROBOT_KEY || '' }}>
+(function () {
+  /* The read-only UptimeRobot key comes from the PUBLIC_UPTIMEROBOT_KEY environment variable. */
+  var DAYS = 90;
+  var REFRESH_MS = 60000;
+  var PLATFORM_WORDS = ['portal', 'website', 'dash', 'panel', 'docs', 'platform', 'billing'];
+
+  var $ = function (id) { return document.getElementById(id); };
+  var colors = { ok: 'var(--ok)', warn: 'var(--warn)', part: 'var(--part)', down: 'var(--down)', none: 'var(--none)', pause: 'var(--dim)' };
+
+  function el(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text != null) e.textContent = text;
+    return e;
+  }
+  function fmtDate(d) { return d.toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' }); }
+  function fmtTime(d) { return d.toLocaleString(undefined, { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' }); }
+  function fmtDur(sec) {
+    var m = Math.round(sec / 60);
+    if (m < 60) return m + ' min';
+    var h = Math.floor(m / 60);
+    return h + ' h ' + (m % 60) + ' min';
+  }
+  function dayColor(u) {
+    if (u == null || isNaN(u)) return colors.none;
+    if (u >= 99.9) return colors.ok;
+    if (u >= 99) return colors.warn;
+    if (u >= 95) return colors.part;
+    return colors.down;
+  }
+
+  function setOverview(list) {
+    var up = 0, down = 0, unk = 0;
+    list.forEach(function (s) { if (s.state === 'up') up++; else if (s.state === 'down') down++; else unk++; });
+    $('c-total').textContent = list.length;
+    $('c-up').textContent = up;
+    $('c-down').textContent = down;
+    $('c-unk').textContent = unk;
+    var pulse = $('pulse');
+    if (down === 0 && unk === 0) { $('ov-title').textContent = 'All ' + list.length + ' services operational'; pulse.style.background = colors.ok; }
+    else if (down === 0) { $('ov-title').textContent = up + ' of ' + list.length + ' services operational'; pulse.style.background = colors.warn; }
+    else { $('ov-title').textContent = down + (down === 1 ? ' service' : ' services') + ' down'; pulse.style.background = colors.down; }
+    $('updated').textContent = 'Status data updated: ' + fmtTime(new Date()) + ' · Refreshes every minute';
+  }
+
+  function stateLabel(s) { return s === 'up' ? 'Operational' : s === 'down' ? 'Down' : s === 'paused' ? 'Paused' : 'Unknown'; }
+  function stateColor(s) { return s === 'up' ? colors.ok : s === 'down' ? colors.down : s === 'paused' ? colors.pause : colors.none; }
+
+  function renderService(s, days) {
+    var row = el('div', 'svc');
+    var top = el('div', 'svc-top');
+    var name = el('div', 'svc-name');
+    var dot = el('i'); dot.style.background = stateColor(s.state);
+    name.appendChild(dot); name.appendChild(document.createTextNode(s.name));
+    top.appendChild(name);
+    top.appendChild(el('span', s.uptime != null ? 'svc-up' : 'svc-state', s.uptime != null ? s.uptime.toFixed(3) + '% uptime' : stateLabel(s.state)));
+    row.appendChild(top);
+    if (s.daily) {
+      var bars = el('div', 'bars');
+      bars.setAttribute('role', 'img');
+      bars.setAttribute('aria-label', s.name + ': ' + (s.uptime != null ? s.uptime.toFixed(2) : '?') + '% uptime over ' + days.length + ' days');
+      s.daily.forEach(function (u, i) {
+        var b = el('span');
+        b.style.background = dayColor(u);
+        b.title = fmtDate(days[i]) + ' · ' + (u == null || isNaN(u) ? 'No data' : u.toFixed(2) + '% uptime');
+        bars.appendChild(b);
+      });
+      row.appendChild(bars);
+    }
+    return row;
+  }
+
+  /* ---------- Mode 1: live browser checks (no API key) ---------- */
+  function probe(url, opaque) {
+    var ctrl = new AbortController();
+    var t = setTimeout(function () { ctrl.abort(); }, 8000);
+    var opts = { cache: 'no-store', signal: ctrl.signal };
+    if (opaque) opts.mode = 'no-cors';
+    return fetch(url, opts).then(function (r) {
+      clearTimeout(t);
+      return opaque || r.ok ? 'up' : 'down';
+    }).catch(function () { clearTimeout(t); return 'down'; });
+  }
+
+  function liveChecks() {
+    var checks = [
+      { name: 'Website', url: '/?status-check=' + Date.now(), opaque: false },
+      { name: 'Documentation', url: '/docs/getting-started/introduction?status-check=' + Date.now(), opaque: false },
+      { name: 'Client portal (dash.evevps.com)', url: 'https://dash.evevps.com/?status-check=' + Date.now(), opaque: true }
+    ];
+    return Promise.all(checks.map(function (c) { return probe(c.url, c.opaque); })).then(function (states) {
+      var list = checks.map(function (c, i) { return { name: c.name, state: states[i] }; });
+      var box = $('l-platform');
+      box.textContent = '';
+      list.forEach(function (s) { box.appendChild(renderService(s, [])); });
+      $('gp-sub').textContent = 'Live check from your browser';
+      setOverview(list);
+    });
+  }
+
+  /* ---------- Mode 2: UptimeRobot (read-only key) ---------- */
+  function uptimeRobot() {
+    var now = Math.floor(Date.now() / 1000);
+    var dayStart = new Date(); dayStart.setHours(0, 0, 0, 0);
+    var start0 = Math.floor(dayStart.getTime() / 1000) - (DAYS - 1) * 86400;
+    var ranges = [], days = [];
+    for (var i = 0; i < DAYS; i++) {
+      var a = start0 + i * 86400, b = Math.min(a + 86400, now);
+      ranges.push(a + '_' + b);
+      days.push(new Date(a * 1000));
+    }
+    var body = new URLSearchParams();
+    body.set('api_key', UPTIMEROBOT_KEY);
+    body.set('format', 'json');
+    body.set('custom_uptime_ranges', ranges.join('-'));
+    body.set('custom_uptime_ratios', String(DAYS));
+    body.set('logs', '1');
+    body.set('logs_limit', '50');
+    body.set('logs_start_date', String(start0));
+    body.set('logs_end_date', String(now));
+
+    return fetch('https://api.uptimerobot.com/v2/getMonitors', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: body.toString()
+    }).then(function (r) { return r.json(); }).then(function (data) {
+      if (data.stat !== 'ok') throw new Error('UptimeRobot error');
+      var servers = [], platform = [], incidents = [];
+      data.monitors.forEach(function (m) {
+        var st = m.status === 2 ? 'up' : (m.status === 8 || m.status === 9) ? 'down' : m.status === 0 ? 'paused' : 'unknown';
+        var daily = String(m.custom_uptime_ranges || '').split('-').map(parseFloat);
+        var created = m.create_datetime || 0;
+        daily = daily.map(function (u, i) { return start0 + (i + 1) * 86400 <= created ? NaN : u; });
+        var s = { name: m.friendly_name, state: st, uptime: parseFloat(m.custom_uptime_ratio), daily: daily };
+        var lower = m.friendly_name.toLowerCase();
+        var isPlatform = PLATFORM_WORDS.some(function (w) { return lower.indexOf(w) !== -1; });
+        (isPlatform ? platform : servers).push(s);
+        (m.logs || []).forEach(function (l) {
+          if (l.type === 1) incidents.push({ name: m.friendly_name, at: new Date(l.datetime * 1000), dur: l.duration || 0, reason: (l.reason && l.reason.detail) || 'Availability check failed', ongoing: st === 'down' && l === m.logs[0] });
+        });
+      });
+
+      $('g-servers').hidden = servers.length === 0;
+      var ls = $('l-servers'); ls.textContent = '';
+      servers.forEach(function (s) { ls.appendChild(renderService(s, days)); });
+
+      var lp = $('l-platform'); lp.textContent = '';
+      platform.forEach(function (s) { lp.appendChild(renderService(s, days)); });
+      $('gp-sub').textContent = 'Last 90 days';
+      $('gp-axis').hidden = platform.length === 0;
+      if (platform.length === 0) lp.appendChild(el('p', 'empty', 'No platform monitors yet.'));
+
+      renderIncidents(incidents);
+      setOverview(servers.concat(platform));
+    });
+  }
+
+  function renderIncidents(list) {
+    list.sort(function (a, b) { return b.at - a.at; });
+    $('g-inc').hidden = false;
+    var total = 0, affected = {};
+    list.forEach(function (x) { total += x.dur; affected[x.name] = 1; });
+    $('s-n').textContent = list.length;
+    $('s-d').textContent = fmtDur(total);
+    $('s-a').textContent = Object.keys(affected).length;
+    var ul = $('l-inc'); ul.textContent = '';
+    if (list.length === 0) { ul.appendChild(el('li', 'empty', 'No incidents in the last 90 days.')); $('more').hidden = true; return; }
+    list.forEach(function (x, i) {
+      var li = el('li');
+      if (i >= 5) li.hidden = true;
+      li.setAttribute('data-extra', i >= 5 ? '1' : '0');
+      var left = el('div');
+      left.appendChild(el('b', null, x.name));
+      left.appendChild(el('br'));
+      left.appendChild(el('span', null, fmtTime(x.at) + ' · Downtime: ' + fmtDur(x.dur) + ' · ' + x.reason));
+      li.appendChild(left);
+      var tag = el('span', 'tag', x.ongoing ? 'Ongoing' : 'Resolved');
+      if (x.ongoing) { tag.style.background = '#2A1418'; tag.style.color = 'var(--down)'; }
+      li.appendChild(tag);
+      ul.appendChild(li);
+    });
+    var more = $('more');
+    more.hidden = list.length <= 5;
+    more.onclick = function () {
+      var open = more.getAttribute('aria-expanded') === 'true';
+      ul.querySelectorAll('[data-extra="1"]').forEach(function (li) { li.hidden = open; });
+      more.setAttribute('aria-expanded', String(!open));
+      more.textContent = open ? 'Show ' + (list.length - 5) + ' more' : 'Show less';
+    };
+    more.textContent = 'Show ' + (list.length - 5) + ' more';
+    more.setAttribute('aria-expanded', 'false');
+  }
+
+  function refresh() {
+    var run = UPTIMEROBOT_KEY ? uptimeRobot().catch(liveChecks) : liveChecks();
+    run.catch(function () {
+      $('ov-title').textContent = 'Status data unavailable';
+      $('updated').textContent = 'Could not load live data. Please try again shortly.';
+    });
+  }
+  refresh();
+  setInterval(refresh, REFRESH_MS);
+})();
+</script>
+<script is:inline>
+(function () {
+  var b = document.querySelector('.menu-btn');
+  if (!b) return;
+  var n = b.closest('.nav');
+  function set(o) { n.classList.toggle('open', o); b.setAttribute('aria-expanded', String(o)); b.setAttribute('aria-label', o ? 'Close menu' : 'Open menu'); }
+  b.addEventListener('click', function () { set(!n.classList.contains('open')); });
+  n.querySelectorAll('nav a, .nav-actions a').forEach(function (a) { a.addEventListener('click', function () { set(false); }); });
+})();
+</script>
+</body>
+</html>

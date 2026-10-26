@@ -1,22 +1,5 @@
 {
-  "rewrites": [
-    {
-      "source": "/docs/getting-started/introduction",
-      "destination": "/docs-introduction.html"
-    },
-    {
-      "source": "/docs/terms/refund-policy",
-      "destination": "/docs-refund-policy.html"
-    },
-    {
-      "source": "/docs/about/about-us",
-      "destination": "/docs-about-us.html"
-    },
-    {
-      "source": "/status",
-      "destination": "/status.html"
-    }
-  ],
+  "framework": "astro",
   "redirects": [
     {
       "source": "/docs",
