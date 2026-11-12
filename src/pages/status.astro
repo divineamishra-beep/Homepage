@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+<script is:inline>try{if(localStorage.getItem("evevps-theme")==="light")document.documentElement.setAttribute("data-theme","light")}catch(e){}</script>
 <meta charset="utf-8">
 <!-- Google tag (gtag.js) -->
 <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-VWZ02WSMV6"></script>
@@ -35,7 +36,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style is:global>
-:root{
+:root{--white:#fff;--wrgb:255,255,255;
   --bg:#0A0E13; --bg2:#0D1218; --surface:#11171F; --line:#1C2530; --line2:#222C38;
   --text:#E6EBF0; --soft:#C9D2DC; --muted:#A7B3C0; --dim:#93A1B0;
   --accent:#6E5CF6; --ink:#A89DFA; --tint:#16132B;
@@ -43,12 +44,13 @@
   --display:"Space Grotesk",Inter,system-ui,sans-serif;
   --mono:"JetBrains Mono",ui-monospace,monospace;
 }
+html[data-theme="light"]{--bg:#FFFFFF;--bg2:#F5F7FA;--surface:#FFFFFF;--line:#E3E8EF;--line2:#D6DDE6;--line3:#C5CED9;--text:#1E2733;--soft:#344150;--muted:#566475;--dim:#6B7888;--accent:#6E5CF6;--ink:#5847E0;--popular:#F2EFFF;--tint:#F2EFFF;--none:#D5DBE3;--white:#0A0E13;--wrgb:10,14,19;color-scheme:light}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.55}
 a{color:var(--ink);text-decoration:none}
-a:hover{color:#fff}
+a:hover{color:var(--white)}
 a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
-h1,h2,h3{font-family:var(--display);color:#fff;margin:0}
+h1,h2,h3{font-family:var(--display);color:var(--white);margin:0}
 p{margin:0}
 .wrap{max-width:1100px;margin:0 auto;padding:0 24px}
 
@@ -57,7 +59,7 @@ header{border-bottom:1px solid var(--line)}
 .logo img{display:block;height:40px;width:auto}
 .nav nav{display:flex;flex-wrap:wrap;gap:6px 24px;font-size:15px;font-weight:500}
 .nav nav a{color:var(--soft);padding:10px 0}
-.nav nav a[aria-current="page"]{color:#fff;box-shadow:inset 0 -2px 0 var(--accent)}
+.nav nav a[aria-current="page"]{color:var(--white);box-shadow:inset 0 -2px 0 var(--accent)}
 .nav-actions{display:flex;gap:10px;align-items:center}
 .nav-actions a{padding:11px 16px;font-size:15px;border-radius:10px;color:var(--text)}
 .btn-primary{background:var(--accent);color:#fff!important;font-weight:600}
@@ -77,7 +79,7 @@ header{border-bottom:1px solid var(--line)}
 .counts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:22px}
 .counts div{background:var(--bg2);padding:16px 18px}
 .counts small{display:block;font-family:var(--mono);font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--dim)}
-.counts strong{font-family:var(--display);font-size:30px;color:#fff}
+.counts strong{font-family:var(--display);font-size:30px;color:var(--white)}
 
 .group{padding:24px;margin-bottom:28px}
 .group-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:6px}
@@ -88,7 +90,7 @@ header{border-bottom:1px solid var(--line)}
 .legend i{width:10px;height:10px;border-radius:3px;display:inline-block}
 .svc{padding:16px 0;border-top:1px solid var(--line)}
 .svc-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px;margin-bottom:10px}
-.svc-name{display:flex;align-items:center;gap:10px;font-weight:600;color:#fff}
+.svc-name{display:flex;align-items:center;gap:10px;font-weight:600;color:var(--white)}
 .svc-name i{width:10px;height:10px;border-radius:50%;display:inline-block}
 .svc-up{font-family:var(--mono);font-size:13px;color:var(--soft)}
 .svc-state{font-size:13px;color:var(--dim)}
@@ -101,19 +103,19 @@ header{border-bottom:1px solid var(--line)}
 .sum{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:16px 0 8px}
 .sum div{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
 .sum small{display:block;font-size:12px;color:var(--dim);font-family:var(--mono);letter-spacing:1px;text-transform:uppercase}
-.sum strong{font-family:var(--display);font-size:22px;color:#fff}
+.sum strong{font-family:var(--display);font-size:22px;color:var(--white)}
 .inc{list-style:none;padding:0;margin:0}
 .inc li{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;padding:14px 0;border-top:1px solid var(--line)}
-.inc b{color:#fff;font-weight:600}
+.inc b{color:var(--white);font-weight:600}
 .inc span{font-size:14px;color:var(--muted)}
 .tag{font-family:var(--mono);font-size:12px;padding:3px 10px;border-radius:999px;background:#13261E;color:var(--ok);align-self:center}
 .empty{padding:18px 0 4px;color:var(--muted);font-size:15px}
 .more{margin-top:12px;background:none;border:1px solid var(--line2);color:var(--soft);border-radius:10px;padding:10px 16px;font:600 14px Inter,system-ui,sans-serif;cursor:pointer;min-height:44px}
-.more:hover{border-color:var(--accent);color:#fff}
+.more:hover{border-color:var(--accent);color:var(--white)}
 
 .help{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;padding:24px;margin-bottom:64px}
 .help p{color:var(--muted)}
-.help a.btn{display:inline-block;padding:12px 20px;border-radius:12px;font-weight:600;background:var(--accent);color:#fff}
+.help a.btn{display:inline-block;padding:12px 20px;border-radius:12px;font-weight:600;background:var(--accent);color:var(--white)}
 
 footer{border-top:1px solid var(--line);background:var(--bg2);font-size:13px;color:var(--dim)}
 .foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-top:22px;padding-bottom:22px}
@@ -127,7 +129,7 @@ footer a{color:var(--soft)}
 /* phones */
 .menu-btn{display:none}
 @media (max-width:860px){
-  .menu-btn{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid var(--line2);border-radius:10px;background:transparent;color:#fff;cursor:pointer}
+  .menu-btn{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid var(--line2);border-radius:10px;background:transparent;color:var(--white);cursor:pointer}
   .nav{gap:12px;padding-top:12px;padding-bottom:12px}
   .nav nav,.nav .nav-actions{display:none;width:100%}
   .nav.open nav{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line)}
@@ -145,6 +147,15 @@ footer a{color:var(--soft)}
   .counts strong{font-size:26px}
   .help a.btn{width:100%;text-align:center}
 }
+
+.theme-toggle{position:relative;display:inline-flex;align-items:center;width:52px;height:28px;padding:0;border-radius:999px;border:1px solid var(--line2);background:var(--bg2);cursor:pointer;flex:none;vertical-align:middle}
+.theme-toggle .tt-ico{position:absolute;top:50%;width:14px;height:14px;margin-top:-7px;color:var(--muted)}
+.theme-toggle .tt-sun{left:7px}
+.theme-toggle .tt-moon{right:7px}
+.theme-toggle .tt-knob{position:absolute;top:2px;left:2px;width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.35);transform:translateX(24px);transition:transform .2s ease}
+html[data-theme="light"] .theme-toggle .tt-knob{transform:none}
+.theme-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){.theme-toggle .tt-knob{transition:none}}
 </style>
 </head>
 <body>
@@ -161,7 +172,8 @@ footer a{color:var(--soft)}
       <a href="/docs/getting-started/introduction">Docs</a>
     </nav>
     <div class="nav-actions">
-      <a href="https://dash.evevps.com/login.php">Log in</a>
+      <button type="button" class="theme-toggle" aria-label="Switch between light and dark mode" title="Light / dark mode"><svg class="tt-ico tt-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><svg class="tt-ico tt-moon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a8.5 8.5 0 1 0 11.1 11.1z"/></svg><span class="tt-knob"></span></button>
+<a href="https://dash.evevps.com/login.php">Log in</a>
       <a href="https://dash.evevps.com/cart.php" class="btn-primary">Deploy server →</a>
     </div>
   </div>
@@ -446,5 +458,6 @@ footer a{color:var(--soft)}
   n.querySelectorAll('nav a, .nav-actions a').forEach(function (a) { a.addEventListener('click', function () { set(false); }); });
 })();
 </script>
+<script is:inline>document.querySelectorAll(".theme-toggle").forEach(function(b){b.addEventListener("click",function(){var r=document.documentElement,l=r.getAttribute("data-theme")!=="light";if(l)r.setAttribute("data-theme","light");else r.removeAttribute("data-theme");try{localStorage.setItem("evevps-theme",l?"light":"dark")}catch(e){}})});</script>
 </body>
 </html>

@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+<script is:inline>try{if(localStorage.getItem("evevps-theme")==="light")document.documentElement.setAttribute("data-theme","light")}catch(e){}</script>
 <meta charset="utf-8">
 <!-- Google tag (gtag.js) -->
 <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-VWZ02WSMV6"></script>
@@ -173,20 +174,21 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style is:global>
-:root{
+:root{--white:#fff;--wrgb:255,255,255;
   --bg:#0A0E13; --bg2:#0D1218; --surface:#11171F; --line:#1C2530; --line2:#222C38; --line3:#2A3646;
   --text:#E6EBF0; --soft:#C9D2DC; --muted:#A7B3C0; --dim:#93A1B0;
   --accent:#6E5CF6; --ink:#A89DFA; --popular:#16132B;
   --display:"Space Grotesk",Inter,system-ui,sans-serif;
   --mono:"JetBrains Mono",ui-monospace,monospace;
 }
+html[data-theme="light"]{--bg:#FFFFFF;--bg2:#F5F7FA;--surface:#FFFFFF;--line:#E3E8EF;--line2:#D6DDE6;--line3:#C5CED9;--text:#1E2733;--soft:#344150;--muted:#566475;--dim:#6B7888;--accent:#6E5CF6;--ink:#5847E0;--popular:#F2EFFF;--tint:#F2EFFF;--none:#D5DBE3;--white:#0A0E13;--wrgb:10,14,19;color-scheme:light}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.55}
 a{color:var(--text);text-decoration:none}
-a:hover{color:#fff}
+a:hover{color:var(--white)}
 a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
-h1,h2,h3{margin:0;font-family:var(--display);color:#fff}
+h1,h2,h3{margin:0;font-family:var(--display);color:var(--white)}
 p{margin:0}
 .wrap{max-width:1200px;margin:0 auto;padding-left:24px;padding-right:24px}
 .alt{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -202,7 +204,7 @@ p{margin:0}
 /* nav */
 header{border-bottom:1px solid var(--line)}
 .nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding-top:16px;padding-bottom:16px}
-.logo{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:.5px;color:#fff}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:.5px;color:var(--white)}
 .nav nav{display:flex;flex-wrap:wrap;gap:6px 26px;font-size:15px;font-weight:500}
 .nav nav a{color:var(--soft);padding:10px 0}
 .nav-actions{display:flex;gap:10px;align-items:center}
@@ -217,15 +219,15 @@ header{border-bottom:1px solid var(--line)}
 .hero-sub{font-size:19px;color:var(--muted);max-width:560px}
 .ctas{display:flex;flex-wrap:wrap;gap:12px}
 .hero-meta{display:flex;flex-wrap:wrap;gap:10px 22px;padding-top:8px;font-size:14px;color:var(--dim)}
-.hero-meta strong{color:#fff;font-weight:600}
+.hero-meta strong{color:var(--white);font-weight:600}
 .panel{flex:1 1 420px;min-width:0;max-width:520px;background:var(--surface);border:1px solid var(--line2);border-radius:18px;overflow:hidden}
 .panel-head{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid var(--line)}
-.panel-host{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:14px;color:#fff}
+.panel-host{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:14px;color:var(--white)}
 .badge{font-family:var(--mono);font-size:12px;padding:4px 10px;border-radius:999px;background:#1B1838;color:var(--ink)}
 .facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line)}
 .facts div{background:var(--surface);padding:16px 20px}
 .facts small{display:block;font-size:12px;color:var(--dim);text-transform:uppercase;letter-spacing:1px}
-.facts span{font-family:var(--mono);font-size:15px;color:#fff}
+.facts span{font-family:var(--mono);font-size:15px;color:var(--white)}
 .chart{padding:18px 20px 8px}
 .chart-label{display:flex;justify-content:space-between;font-size:13px;color:var(--dim)}
 .bars{display:flex;align-items:flex-end;gap:5px;height:72px;padding-top:12px}
@@ -262,14 +264,14 @@ header{border-bottom:1px solid var(--line)}
 .plan-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px}
 .plan h3{font-size:20px}
 .tag{font-family:var(--mono);font-size:11px;padding:4px 9px;border-radius:999px;background:var(--accent);color:#fff;font-weight:500}
-.price{font-family:var(--display);font-weight:700;font-size:36px;color:#fff}
+.price{font-family:var(--display);font-weight:700;font-size:36px;color:var(--white)}
 .per{color:var(--dim)}
 .specs{font-size:14px;line-height:2;color:var(--soft);border-top:1px solid var(--line);padding-top:14px}
 .popular .specs{border-top-color:#2A2650}
 .where{font-size:13px;color:var(--dim)}
 .plan .btn{margin-top:auto;padding:13px}
 .included{margin-top:20px;display:flex;flex-wrap:wrap;gap:10px 28px;padding:18px 24px;border:1px dashed #263140;border-radius:14px;font-size:14px;color:var(--muted)}
-.included strong{color:#fff;font-weight:600}
+.included strong{color:var(--white);font-weight:600}
 
 /* cards */
 .section{padding-top:88px;padding-bottom:88px}
@@ -288,7 +290,7 @@ header{border-bottom:1px solid var(--line)}
 .locations > div:first-child{flex:1 1 380px;min-width:0}
 .locations .h2{margin-bottom:14px}
 .dc{flex:1 1 520px;min-width:0;padding:26px;background:var(--surface);border:1px solid var(--line2);border-radius:18px;display:flex;flex-direction:column;gap:14px}
-.dc-name{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:22px;color:#fff}
+.dc-name{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:22px;color:var(--white)}
 .dc-sub{font-size:14px;color:var(--dim)}
 .dc-specs{font-family:var(--mono);font-size:13px;line-height:1.9;color:var(--soft);border-top:1px solid var(--line);padding-top:12px}
 .dc a{font-weight:600;color:var(--ink)}
@@ -299,20 +301,20 @@ header{border-bottom:1px solid var(--line)}
 .faq .h2{margin-bottom:40px}
 .faq-list{border-top:1px solid var(--line)}
 .faq-item{border-bottom:1px solid var(--line)}
-.faq-item button{width:100%;min-height:64px;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 4px;background:none;border:0;color:#fff;font:600 18px Inter,system-ui,sans-serif;text-align:left;cursor:pointer}
+.faq-item button{width:100%;min-height:64px;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 4px;background:none;border:0;color:var(--white);font:600 18px Inter,system-ui,sans-serif;text-align:left;cursor:pointer}
 .faq-item .plus{font-size:24px;line-height:1;color:var(--ink);transition:transform .2s}
 .faq-item button[aria-expanded="true"] .plus{transform:rotate(45deg)}
 .faq-item p{padding:0 4px 22px;color:var(--muted)}
 
 /* cta */
 .cta-wrap{padding-bottom:88px}
-.cta{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:28px;padding:48px;background:var(--accent);border-radius:24px;color:#fff}
+.cta{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:28px;padding:48px;background:var(--accent);border-radius:24px;color:var(--white)}
 .cta > div:first-child{flex:1 1 420px;min-width:0}
 .cta h2{margin-bottom:8px;font-weight:700;font-size:40px;line-height:1.1;letter-spacing:-1px}
 .cta p{font-size:17px}
-.btn-white{background:#fff;color:#3F2FC4}
+.btn-white{background:var(--white);color:#3F2FC4}
 .btn-white:hover{color:#2A1DA0}
-.btn-ghost{border:1.5px solid #fff;color:#fff}
+.btn-ghost{border:1.5px solid var(--white);color:var(--white)}
 
 /* footer */
 footer{border-top:1px solid var(--line);background:var(--bg2)}
@@ -340,7 +342,7 @@ footer{border-top:1px solid var(--line);background:var(--bg2)}
 /* phones */
 .menu-btn{display:none}
 @media (max-width:860px){
-  .menu-btn{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid var(--line2);border-radius:10px;background:transparent;color:#fff;cursor:pointer}
+  .menu-btn{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid var(--line2);border-radius:10px;background:transparent;color:var(--white);cursor:pointer}
   .nav{gap:12px;padding-top:12px;padding-bottom:12px}
   .nav nav,.nav .nav-actions{display:none;width:100%}
   .nav.open nav{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line)}
@@ -379,6 +381,15 @@ footer{border-top:1px solid var(--line);background:var(--bg2)}
   .foot > div:first-child{grid-column:1 / -1}
   .copy{flex-direction:column}
 }
+
+.theme-toggle{position:relative;display:inline-flex;align-items:center;width:52px;height:28px;padding:0;border-radius:999px;border:1px solid var(--line2);background:var(--bg2);cursor:pointer;flex:none;vertical-align:middle}
+.theme-toggle .tt-ico{position:absolute;top:50%;width:14px;height:14px;margin-top:-7px;color:var(--muted)}
+.theme-toggle .tt-sun{left:7px}
+.theme-toggle .tt-moon{right:7px}
+.theme-toggle .tt-knob{position:absolute;top:2px;left:2px;width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.35);transform:translateX(24px);transition:transform .2s ease}
+html[data-theme="light"] .theme-toggle .tt-knob{transform:none}
+.theme-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){.theme-toggle .tt-knob{transition:none}}
 </style>
 </head>
 <body>
@@ -398,7 +409,8 @@ footer{border-top:1px solid var(--line);background:var(--bg2)}
     <a href="/docs/getting-started/introduction">Docs</a>
   </nav>
   <div class="nav-actions">
-    <a href="https://dash.evevps.com/login.php">Log in</a>
+    <button type="button" class="theme-toggle" aria-label="Switch between light and dark mode" title="Light / dark mode"><svg class="tt-ico tt-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><svg class="tt-ico tt-moon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a8.5 8.5 0 1 0 11.1 11.1z"/></svg><span class="tt-knob"></span></button>
+<a href="https://dash.evevps.com/login.php">Log in</a>
     <a href="https://dash.evevps.com/cart.php" class="btn-primary" style="padding:11px 18px;font-weight:600">Deploy server →</a>
   </div>
 </div>
@@ -438,7 +450,7 @@ footer{border-top:1px solid var(--line);background:var(--bg2)}
       </div>
     </div>
     <div class="term">
-      <div><b>$</b> <span style="color:#fff">mstsc /v:177.3.192.xx</span></div>
+      <div><b>$</b> <span style="color:var(--white)">mstsc /v:177.3.192.xx</span></div>
       <div>Remote Desktop connected · Administrator</div>
       <div><b>C:\Users\Administrator</b>&gt; <span class="cursor"></span></div>
     </div>
@@ -679,5 +691,6 @@ footer{border-top:1px solid var(--line);background:var(--bg2)}
   n.querySelectorAll('nav a, .nav-actions a').forEach(function (a) { a.addEventListener('click', function () { set(false); }); });
 })();
 </script>
+<script is:inline>document.querySelectorAll(".theme-toggle").forEach(function(b){b.addEventListener("click",function(){var r=document.documentElement,l=r.getAttribute("data-theme")!=="light";if(l)r.setAttribute("data-theme","light");else r.removeAttribute("data-theme");try{localStorage.setItem("evevps-theme",l?"light":"dark")}catch(e){}})});</script>
 </body>
 </html>
