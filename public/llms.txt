@@ -1,0 +1,58 @@
+# EveVps
+
+> EveVps sells unmanaged Windows RDP servers and KVM Linux VPS servers hosted in New York, USA. Plans start at $11.99 per month, payment is by cryptocurrency, and servers are set up automatically, usually within 1 minute of the payment confirming.
+
+Key facts:
+
+- Products: Windows RDP (Windows 10 or 11, full Administrator access) and Linux VPS (KVM, full root access).
+- Location: New York, USA.
+- Hardware: Intel Xeon Gold 6152 processors, NVMe SSD storage, 1 Gbps port, dedicated IPv4 address.
+- Included with every plan: always-on DDoS protection and unlimited operating system reinstalls from the control panel.
+- Linux distributions: Ubuntu, Debian, AlmaLinux, Rocky Linux, CentOS Stream, Fedora and Alpine.
+- Payment: cryptocurrency only, including Bitcoin (BTC), Tether (USDT), Ethereum (ETH) and Litecoin (LTC).
+- Setup time: automatic, usually within 1 minute of a confirmed payment.
+- Management: unmanaged. The customer manages the software; EveVps looks after hardware, network and DDoS protection.
+- Support: support@evevps.com or a ticket in the client area. Replies within 30 minutes.
+- Refunds: full refund if a server is not delivered within 24 hours of a confirmed payment. Delivered servers are not refundable.
+
+## Plans and prices
+
+Windows RDP and Linux VPS use the same five plans. Prices are per month in US dollars.
+
+| Plan | vCPU | RAM | NVMe storage | Price per month |
+|---|---|---|---|---|
+| Silver | 2 | 4 GB | 50 GB | $11.99 |
+| Gold | 4 | 8 GB | 100 GB | $22.39 |
+| Champion | 6 | 16 GB | 130 GB | $35.99 |
+| Titan | 6 | 32 GB | 150 GB | $49.99 |
+| Legend | 8 | 64 GB | 200 GB | $75.99 |
+
+## Products
+
+- [Windows RDP](https://www.evevps.com/windows-rdp): Windows 10 or 11 remote desktop server in New York with full Administrator access.
+- [Linux VPS](https://www.evevps.com/linux-vps): KVM Linux VPS in New York with full root access.
+- [Buy RDP with crypto](https://www.evevps.com/buy-rdp-crypto): how to buy a Windows RDP with Bitcoin, USDT, Ethereum, Litecoin and other cryptocurrencies.
+
+## Use cases
+
+- [Forex VPS](https://www.evevps.com/forex-vps): running MT4, MT5 and expert advisors 24/7 on a Windows server in New York.
+- [Docker VPS](https://www.evevps.com/docker-vps): running Docker and Docker Compose on a KVM VPS with root access.
+- [n8n VPS](https://www.evevps.com/n8n-vps): self-hosting n8n automation workflows.
+
+## Comparisons
+
+- [EveVps vs Contabo](https://www.evevps.com/evevps-vs-contabo): Windows RDP prices, Windows versions, port speed, storage and crypto payments compared.
+- [EveVps vs Vultr](https://www.evevps.com/evevps-vs-vultr): Windows licence fees, DDoS protection, billing, locations and crypto payments compared.
+
+## Company and policies
+
+- [About EveVps](https://www.evevps.com/docs/about/about-us): who we are, what every server includes and how to reach us.
+- [Introduction](https://www.evevps.com/docs/getting-started/introduction): overview of the service for new customers.
+- [Refund and cancellation policy](https://www.evevps.com/docs/terms/refund-policy): when refunds apply, how they are paid and how to cancel.
+- [Terms of Service](https://dash.evevps.com/knowledgebase/18/Terms-of-Service.html)
+- [Privacy Policy](https://dash.evevps.com/knowledgebase/19/Privacy-Policy.html)
+- [Server status](https://www.evevps.com/status): live service status and 90-day uptime history.
+
+## Ordering
+
+- [Client area and store](https://dash.evevps.com/): order a server, manage services, pay invoices and open support tickets.
