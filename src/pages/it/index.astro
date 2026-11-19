@@ -739,5 +739,6 @@ html[data-theme="light"] .theme-toggle .tt-knob{transform:none}
 })();
 </script>
 <script is:inline>document.querySelectorAll(".theme-toggle").forEach(function(b){b.addEventListener("click",function(){var r=document.documentElement,l=r.getAttribute("data-theme")!=="light";if(l)r.setAttribute("data-theme","light");else r.removeAttribute("data-theme");try{localStorage.setItem("evevps-theme",l?"light":"dark")}catch(e){}})});</script>
+<script is:inline>/* portal-lang */(function(){var L="italian";document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href^='https://dash.evevps.com']");if(!a||/[?&]language=/.test(a.href))return;a.href+=(a.href.indexOf("?")>-1?"&":"?")+"language="+L;},true);})();</script>
 </body>
 </html>
