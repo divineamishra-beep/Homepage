@@ -6,6 +6,36 @@
       "source": "/docs",
       "destination": "/docs/getting-started/introduction",
       "permanent": false
+    },
+    {
+      "source": "/es/docs",
+      "destination": "/es/docs/getting-started/introduction",
+      "permanent": false
+    },
+    {
+      "source": "/fr/docs",
+      "destination": "/fr/docs/getting-started/introduction",
+      "permanent": false
+    },
+    {
+      "source": "/de/docs",
+      "destination": "/de/docs/getting-started/introduction",
+      "permanent": false
+    },
+    {
+      "source": "/id/docs",
+      "destination": "/id/docs/getting-started/introduction",
+      "permanent": false
+    },
+    {
+      "source": "/ru/docs",
+      "destination": "/ru/docs/getting-started/introduction",
+      "permanent": false
+    },
+    {
+      "source": "/it/docs",
+      "destination": "/it/docs/getting-started/introduction",
+      "permanent": false
     }
   ]
 }
